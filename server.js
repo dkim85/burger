@@ -1,30 +1,27 @@
-// storing the the packages required to run in this app
 var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var exphbs = require('express-handlebars');
 
 var app = express();
-var PORT = process.env.PORT || 3000;
-app.use(express.static('/public'));
+app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.urlencoded({
-    extended : false
+  extended: false
 }))
 
 app.use(methodOverride('_method'));
 app.engine('handlebars',exphbs({
-    dafaultLayout: 'main'
+  defaultLayout: 'main'
 }));
 app.set('view engine','handlebars');
 
-// reference routes.js through a variable
-
+// refering route.js
 var routes = require('./controllers/routes.js');
-app.use(routes);
+app.use('/',routes);
+// app.use(methodOverride('_method'));
 
-// Testing port
 var port = 3000;
-app.listen(PORT, function(){
-    console.log("App is now listening to: " + PORT);
-});
+app.listen(port);
+// listening to port 
+console.log('Listening to Port: ' + port);

@@ -1,13 +1,13 @@
-// models folder requires my ORM and it contains all the methods I will be using in order to modify our ORM for the use of burgers DB
+// requires orm and employ all the methods in order to modify our ORM 
 
 var orm = require('../config/orm.js');
-
-// running the function of repsonse as a callback --> send it to route.js
+// be careful when typing cd instead of cb~ next time
 var burger = {
-    all: function(cb){
-        orm.all('burgers',function(res){
-            cb(res);
-        })
-    }
+  all: function(cb){
+    orm.all('burgers',function(res){
+      cb(res);
+    })
+  }
 }
+
 module.exports = burger;

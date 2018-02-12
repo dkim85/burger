@@ -1,5 +1,32 @@
-{{!-- a space where I am going to deposit the majority of  my code wink wink --}}
+{{!-- space where we will put the majority stuff of our code --}}
+{{!-- testing --}}
+{{!-- <p>Bravo, you're succesully connected!</p> --}}
 
-{{!-- creating a simple statement indicating connection to server is successful --}}
-
-<p>Bravo! you're connected!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 text-center" id="top-bar">
+        <h1>Eat Dat Burger</h1>
+    </div>
+    <div class="col-xs-6 text-center" class="tas">
+      <div class="row">
+        {{#each burger_data}}
+            {{#unless this.devoured}}
+        <div class="col-xs-9 text-center">
+          <pre>{{this.id}}. {{this.burger_name}}</pre>
+        </div>
+      <div class="col-xs 3 text-center">
+        <form method="POST" action="/burgers/ipdate?_method=PUT"
+        class="button-size">
+          <input type="hidden" name="burger_id" type="text"
+          value={{this.id}}>
+          <br>
+          <button type="submit" class="btn btn-default">
+            DEVOUR IT!</button>
+        </form>
+      </div>
+      {{/unless}}
+      {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
