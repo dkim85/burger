@@ -15,7 +15,7 @@
           <pre>{{this.id}}. {{this.burger_name}}</pre>
         </div>
       <div class="col-xs 3 text-center">
-        <form method="POST" action="/burgers/ipdate?_method=PUT"
+        <form method="POST" action="/burgers/update?_method=PUT"
         class="button-size">
           <input type="hidden" name="burger_id" type="text"
           value={{this.id}}>
@@ -27,6 +27,30 @@
       {{/unless}}
       {{/each}}
       </div>
+    </div>
+    {{!-- instead of dissapear, move the burger around the screen --}}
+    <div class="col-xs-6 text-center" class="task">
+      {{#each burger_data}}
+        {{#if this.devoured}}
+          <input class="form-control" type="text" placeholder="{{this.id}}. {{this.burger_name}}" readonly>
+        {{/if}}
+      {{/each}}
+    </div>
+  </div>
+</div>
+
+{{!-- add data to database --}}
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 text-center enter_section">
+      <form action="/burgers/create" method="POST">
+        <input type="text" name="burger_name" class="form-control"
+        value="" id="enter_text">
+        <button type="submit" class="btn btn-primary" id"
+        text-enter-button">SUBMIT</button>
+      </form>
+      <P>Enter in a burger you want to get intoxicated</P>
     </div>
   </div>
 </div>
