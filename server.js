@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var exphbs = require('express-handlebars');
 
+// allows us to serve static files (images CSS, etc)
 var app = express();
 app.use(express.static(__dirname + '/public'));
 
@@ -21,7 +22,8 @@ var routes = require('./controllers/routes.js');
 app.use('/',routes);
 // app.use(methodOverride('_method'));
 
-var port = 3000;
-app.listen(port);
-// listening to port 
-console.log('Listening to Port: ' + port);
+// set port
+var port = process.env.PORT || 3000;
+app.listen(port, function() {
+  console.log("😃 app running");
+});
